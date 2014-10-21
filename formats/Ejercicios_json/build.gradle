@@ -16,7 +16,7 @@ task addPerson(type: JavaExec, dependsOn: classes) {
     }
     group 			= 'Formats JSON'
     description 	= 'Add a person to an address book'
-    main 			= 'formats.json.AddPerson'
+    main 			= 'todo.AddPerson'
 	classpath 		= sourceSets.main.runtimeClasspath
 	standardInput	= System.in
 } 
@@ -24,6 +24,6 @@ task addPerson(type: JavaExec, dependsOn: classes) {
 task listPeople(type: JavaExec) {
     group 			= 'Formats JSON'
     description 	= 'List the contents of an address book'
-    main 			= 'formats.json.ListPeople'
+    main 			= 'todo.ListPeople'
 	classpath 		= sourceSets.main.runtimeClasspath
 }
