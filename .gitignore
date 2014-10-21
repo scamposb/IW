@@ -1,7 +1,7 @@
-.project
-./formats/Ejercicios_json/.gradle/
-./formats/Ejercicios_json/.settings/
-./formats/Ejercicios_json/bin/
-./formats/Ejercicios_json/build/
-./formats/Ejercicios_json/.classpath
-./formats/Ejercicios_json/.project
+/.project
+/formats/Ejercicios_json/.gradle/
+/formats/Ejercicios_json/.settings/
+/formats/Ejercicios_json/bin/
+/formats/Ejercicios_json/build/
+/formats/Ejercicios_json/.classpath
+/formats/Ejercicios_json/.project
