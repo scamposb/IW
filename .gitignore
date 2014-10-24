@@ -1,6 +1,5 @@
 /.project
-/.settings/
-/.settings/gradle
+.settings/
 /formats/Ejercicios_json/.gradle/
 /formats/Ejercicios_json/.settings/
 /formats/Ejercicios_json/bin/
