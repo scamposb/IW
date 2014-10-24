@@ -6,9 +6,7 @@
 /formats/Ejercicios_json/build/
 /formats/Ejercicios_json/.classpath
 /formats/Ejercicios_json/.project
-/servlets/todoServlet/.gradle/
-/servlets/todoServlet/.settings/
-/servlets/todoServlet/bin/
-/servlets/todoServlet/build/
-/servlets/todoServlet/.classpath
-/servlets/todoServlet/.project
+/inicio_servlets/.gradle/
+/inicio_servlets/.settings/
+/inicio_servlets/.project
+/inicio_servlets/.classpath
