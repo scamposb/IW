@@ -45,14 +45,14 @@ public class AddPerson {
 
 			stdout.print("Is this a personal, home, or work task? ");
 			String type = stdin.readLine();
-			if (type.equals("mobile")) {
+			if (type.equals("personal")) {
 				oneTask.setType(PERSONAL);
 			} else if (type.equals("home")) {
 				oneTask.setType(HOME);
 			} else if (type.equals("work")) {
 				oneTask.setType(WORK);
 			} else {
-				stdout.println("Unknown phone type.  Using default.");
+				stdout.println("Unknown task type.  Using default.");
 			}
 			
 			stdout.print("Has the task a finish date? (leave blank if it isnt): ");
