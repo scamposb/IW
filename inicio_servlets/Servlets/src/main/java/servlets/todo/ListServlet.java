@@ -31,16 +31,8 @@ public class ListServlet extends HttpServlet {
 			TaskBook tb = gson.fromJson(new FileReader(DEFAULT_FILE_NAME), TaskBook.class);
 			Print(tb,out,DEFAULT_FILE_NAME,task);
 		}catch(FileNotFoundException e){
-			out.println(
-				"<html>" +
-				"<head>" + 
-				"<title>Oh, oh...</title>" + 
-				"</head>" +
-				"<body>" + 
-					"<h1>Lo sentimos. Tenemos un problema con el fichero," +
-					"contacte con el desarrollador para mas informacion</h1>" + 
-				"</body>"+
-				"</html>");
+			resp.sendError(406);
+			resp.sendRedirect("error.html");
 		}
 	}
 	
@@ -55,25 +47,25 @@ public class ListServlet extends HttpServlet {
 		out.println("<h1>Listado de todas las tareas</h1>");
 		String persona="";
 		for (Person person : tb.getPersonList()) {
-			persona+="Person ID: " + person.getId()	+ "Name: " + person.getName();
+			persona+="Person ID: " + person.getId()	+ " Name: " + person.getName();
 			if (person.hasEmail()) {
-				persona+="\nE-mail address: " + person.getEmail();
+				persona+=" (" + person.getEmail()+")";
 			}
 			for (Task task : person.getTaskList()) {
 				switch (task.getType()) {
 				case PERSONAL:
-					persona+="\n\t\tPersonal task #: ";
+					persona+="<br>&nbsp;&nbsp;&nbsp;&nbsp;Personal task #: ";
 					break;
 				case HOME:
-					persona+="\n\t\tHome task #: ";
+					persona+="<br>&nbsp;&nbsp;&nbsp;&nbsp;Home task #: ";
 					break;
 				case WORK:
-					persona+="\n\t\tWork task #: ";
+					persona+="<br>&nbsp;&nbsp;&nbsp;&nbsp;Work task #: ";
 					break;
 				}
 				persona+=task.getTitle();
 			}
-			out.println("<div>"+persona+"</div>");
+			out.println("<div>"+persona+"</div><br><br>");
 			persona="";
 		}
 		}

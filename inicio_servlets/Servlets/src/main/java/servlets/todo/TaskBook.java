@@ -15,6 +15,7 @@ public class TaskBook {
 	}
 
 	public void addPerson(Person person) {
-		personList.add(person);
+		if(person!=null)
+			personList.add(person);
 	}
 }

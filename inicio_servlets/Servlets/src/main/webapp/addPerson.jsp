@@ -37,12 +37,12 @@
 %>
 <body>
 	<h1>Add person</h1>
-	<form method="post" action="addPerson">
+	<form method="post" action="AddPerson">
 		<p>Person ID:<input type="text" name="pid" value="<%=pid%>"/><%=pidError%></p>
 		<p>Name:<input type="text" name="name" value="<%=name%>"/><%=nameError%></p>
 		<p>E-mail (blank for none):<input type="email" name="email" value="<%=email%>"/><%=emailError%></p>
 		<p>Task (leave blank to finish):<input type="text" name="task" value="<%=task%>"/><%=taskError%></p>
-		<h3>Fill data only if exists a task</h3>
+		<h3>Fill data only if exists a task</h3>	
 		<p>Is this a personal,home or work task?:<input type="text" name="typetask" value="<%=typetask%>"/><%=typeError%></p>	
 		<p>Has the task a finish date? (leave blank if it isnt) :<input type="text" name="date" value="<%=date%>"/><%=dateError%></p>
 		<p>Insert a little description of the task:<input type="textarea" name="description" value="<%=description%>"/><%=descriptionError%></p>

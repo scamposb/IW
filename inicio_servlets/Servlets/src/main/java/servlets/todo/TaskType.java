@@ -1,5 +1,5 @@
 package servlets.todo;
 
 public enum TaskType {
-	PERSONAL, HOME, WORK
+	PERSONAL, HOME, WORK, DEFAULT
 }

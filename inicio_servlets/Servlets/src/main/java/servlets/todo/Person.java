@@ -33,8 +33,8 @@ public class Person {
 		return taskList;
 	}
 
-	public void setPhoneList(List<Task> phones) {
-		this.taskList = phones;
+	public void setTaskList(List<Task> tasks) {
+		this.taskList = tasks;
 	}
 
 	public String name;
@@ -42,12 +42,12 @@ public class Person {
 	public String email;
 	public List<Task> taskList = new ArrayList<Task>();
 	
-	public void addPhone(Task t) {
+	public void addTask(Task t) {
 		taskList.add(t);
 	}
 
 	public boolean hasEmail() {
-		return email != null;
+		return email != null && (!email.equals(""));
 	}
 	public boolean hasTasks(){
 		return !taskList.isEmpty();
