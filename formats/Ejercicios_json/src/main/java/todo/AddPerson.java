@@ -67,7 +67,7 @@ public class AddPerson {
 				oneTask.setDescription(description);
 			}
 			
-			person.addPhone(oneTask);
+			person.addTask(oneTask);
 		}
 
 		return person;

@@ -17,7 +17,7 @@ class ListPeople {
 				System.out.println("  E-mail address: " + person.getEmail());
 			}
 
-			for (Task task : person.getPhoneList()) {
+			for (Task task : person.getTaskList()) {
 				switch (task.getType()) {
 				case PERSONAL:
 					System.out.print("  Personal task #: ");

@@ -29,12 +29,12 @@ public class Person {
 		this.email = email;
 	}
 
-	public List<Task> getPhoneList() {
+	public List<Task> getTaskList() {
 		return taskList;
 	}
 
-	public void setPhoneList(List<Task> phones) {
-		this.taskList = phones;
+	public void setTaskList(List<Task> tasks) {
+		this.taskList = tasks;
 	}
 
 	public String name;
@@ -42,7 +42,7 @@ public class Person {
 	public String email;
 	public List<Task> taskList = new ArrayList<Task>();
 	
-	public void addPhone(Task t) {
+	public void addTask(Task t) {
 		taskList.add(t);
 	}
 
