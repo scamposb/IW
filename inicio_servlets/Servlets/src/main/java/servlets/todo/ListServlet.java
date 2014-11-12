@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/listTasks" })
-public class ListPeopleServlet extends HttpServlet {
+public class ListServlet extends HttpServlet {
 	
 	public final static String DEFAULT_FILE_NAME = "task_book.json";
 	
@@ -29,7 +29,6 @@ public class ListPeopleServlet extends HttpServlet {
 		Gson gson= new Gson();
 		try{
 			TaskBook tb = gson.fromJson(new FileReader(DEFAULT_FILE_NAME), TaskBook.class);
-			//System.out.println(tb.getPersonList());
 			Print(tb,out,DEFAULT_FILE_NAME,task);
 		}catch(FileNotFoundException e){
 			out.println(
@@ -48,26 +47,28 @@ public class ListPeopleServlet extends HttpServlet {
 	static void Print(TaskBook tb, PrintWriter out,String taskb, String filter) {
 		out.println("<html>"+
 				"<head>"+
-				"<title>IT WORKS!!!</title>"+
+				"<title>List tasks</title>"+
 				"</head>" +
-				"<body>"+
-					"<h1>Estas mirando el libro de tareas "+taskb+" metido en el "+filter+"</h1>");
+				"<body>");
+		if(filter.equals("")){
+			/* Lista todas las tareas */
+		out.println("<h1>Listado de todas las tareas</h1>");
 		String persona="";
 		for (Person person : tb.getPersonList()) {
 			persona+="Person ID: " + person.getId()	+ "Name: " + person.getName();
 			if (person.hasEmail()) {
-				persona+="  E-mail address: " + person.getEmail();
+				persona+="\nE-mail address: " + person.getEmail();
 			}
-			for (Task task : person.getPhoneList()) {
+			for (Task task : person.getTaskList()) {
 				switch (task.getType()) {
 				case PERSONAL:
-					persona+="  Personal task #: ";
+					persona+="\n\t\tPersonal task #: ";
 					break;
 				case HOME:
-					persona+="  Home task #: ";
+					persona+="\n\t\tHome task #: ";
 					break;
 				case WORK:
-					persona+="  Work task #: ";
+					persona+="\n\t\tWork task #: ";
 					break;
 				}
 				persona+=task.getTitle();
@@ -75,6 +76,28 @@ public class ListPeopleServlet extends HttpServlet {
 			out.println("<div>"+persona+"</div>");
 			persona="";
 		}
+		}
+		else{
+			/* Lista las tareas que contienen la palabra insertada en filter */
+			for(Person person : tb.getPersonList()){
+				if(person.hasTasks()){					
+					String personEmail="";
+					if(!person.hasEmail()) personEmail="Email not found";
+					else personEmail=person.getEmail();	
+					for(Task task: person.getTaskList()){
+						if(coincidences(filter,task)){	
+							out.println("<h1>Task with coincidences</h1>");
+							out.println("<div><b>Title: </b>"+task.getTitle()+"<br>");
+							out.println("<b>Type: </b>"+task.getType()+"<br>");
+							if(task.getDescription()!=null)
+								out.println("<b>Description:  </b>"+task.getDescription()+"<br>");
+							out.println("<b>Task's person: </b>"+person.getName()+" ("+personEmail+")<br></div>");
+						}
+					}
+				}				
+			}
+		}
+					
 		out.println("</body></html>");
  
 	}
@@ -83,5 +106,10 @@ public class ListPeopleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		doGet(req, resp);
+	}
+	
+	private static boolean coincidences(String filter, Task task){
+		return (task.getTitle().contains(filter) || task.getDescription().contains(filter)
+				|| task.getDate().equals(filter));
 	}
 }

@@ -29,7 +29,7 @@ public class Person {
 		this.email = email;
 	}
 
-	public List<Task> getPhoneList() {
+	public List<Task> getTaskList() {
 		return taskList;
 	}
 
@@ -48,6 +48,9 @@ public class Person {
 
 	public boolean hasEmail() {
 		return email != null;
+	}
+	public boolean hasTasks(){
+		return !taskList.isEmpty();
 	}
 	
 }
