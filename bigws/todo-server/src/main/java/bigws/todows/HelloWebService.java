@@ -1,4 +1,4 @@
-package bigws.hellows;
+package bigws.todows;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;

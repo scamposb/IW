@@ -13,6 +13,6 @@ dependencies {
 task server(type: JavaExec) {
     group 			= 'Hello World Service'
     description 	= 'Start a SOAP endpoint'
-    main 			= 'bigws.hellows.Server'
+    main 			= 'bigws.todows.Server'
 	classpath 		= sourceSets.main.runtimeClasspath
 }
