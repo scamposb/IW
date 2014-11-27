@@ -54,6 +54,6 @@ System.setProperty('javax.xml.accessExternalSchema', 'all')
 task client(type: JavaExec) {
     group 			= 'Hello World Client'
     description 	= 'Run a client that connectos to a SOAP endpoint'
-    main 			= 'bigws.hellows.Client'
+    main 			= 'bigws.todows.Client'
 	classpath 		= sourceSets.main.runtimeClasspath
 }
