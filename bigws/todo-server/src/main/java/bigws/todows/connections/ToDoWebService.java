@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import bigws.todows.elements.ToDoList;
@@ -19,8 +20,9 @@ public class ToDoWebService {
 	public final static String DEFAULT_FILE_NAME = "todo_list.json";
 
 	@WebMethod()
-	public String addTask(String title, int priority, String date,
-			String description) {
+	public String addTask(
+			@WebParam (name="title")String title,@WebParam (name="priority") int priority,@WebParam (name="date") String date,
+			@WebParam (name="description")String description) {
 		String filename = DEFAULT_FILE_NAME;
 		String result = "";
 		ToDoList list = new ToDoList();
@@ -49,7 +51,7 @@ public class ToDoWebService {
 	}
 
 	@WebMethod()
-	public String removeTask(String title) {
+	public String removeTask(@WebParam (name="title") String title) {
 		String filename = DEFAULT_FILE_NAME;
 		String result = "";
 		ToDoList list = new ToDoList();
@@ -87,7 +89,6 @@ public class ToDoWebService {
 		String filename = DEFAULT_FILE_NAME;
 		ToDoList list = new ToDoList();
 		Gson gson = new Gson();
-		
 		try {
 			list = gson.fromJson(new FileReader(filename), ToDoList.class);
 		} catch (FileNotFoundException e) {

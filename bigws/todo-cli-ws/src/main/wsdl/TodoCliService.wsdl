@@ -7,31 +7,73 @@
 	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:tns="http://todows.bigws/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://todows.bigws/"
-	name="HelloWebServiceService">
+	name="TodoWsService">
 	<types>
 		<xsd:schema>
 			<xsd:import namespace="http://todows.bigws/"
-				schemaLocation="helloWorld.xsd" />
+				schemaLocation="toDo.xsd" />
 		</xsd:schema>
 	</types>
-	<message name="sayHello">
-		<part name="parameters" element="tns:sayHello" />
+	<message name="listTasks">
+		<part name="parameters" element="tns:listTasks" />
 	</message>
-	<message name="sayHelloResponse">
-		<part name="parameters" element="tns:sayHelloResponse" />
+	<message name="listTasksResponse">
+		<part name="parameters" element="tns:listTasksResponse" />
 	</message>
-	<portType name="HelloWebService">
-		<operation name="sayHello">
-			<input wsam:Action="http://todows.bigws/HelloWebService/sayHelloRequest"
-				message="tns:sayHello" />
-			<output wsam:Action="http://todows.bigws/HelloWebService/sayHelloResponse"
-				message="tns:sayHelloResponse" />
+	<message name="addTask">
+		<part name="parameters" element="tns:addTask" />
+	</message>
+	<message name="addTaskResponse">
+		<part name="parameters" element="tns:addTaskResponse" />
+	</message>
+	<message name="removeTask">
+		<part name="parameters" element="tns:removeTask" />
+	</message>
+	<message name="removeTaskResponse">
+		<part name="parameters" element="tns:removeTaskResponse" />
+	</message>
+	<portType name="ToDoWebService">
+		<operation name="listTasks">
+			<input wsam:Action="http://todows.bigws/ToDoWebService/listTasksRequest"
+				message="tns:listTasks" />
+			<output wsam:Action="http://todows.bigws/HelloWebService/listTasksResponse"
+				message="tns:listTasksResponse" />
+		</operation>
+		<operation name="addTask">
+			<input wsam:Action="http://todows.bigws/ToDoWebService/addTaskRequest"
+				message="tns:addTask" />
+			<output wsam:Action="http://todows.bigws/HelloWebService/addTaskResponse"
+				message="tns:addTaskResponse" />
+		</operation>
+		<operation name="removeTask">
+			<input wsam:Action="http://todows.bigws/ToDoWebService/removeTaskRequest"
+				message="tns:removeTask" />
+			<output wsam:Action="http://todows.bigws/HelloWebService/removeTaskResponse"
+				message="tns:removeTaskResponse" />
 		</operation>
 	</portType>
-	<binding name="HelloWebServicePortBinding" type="tns:HelloWebService">
+	<binding name="ToDoWebServicePortBinding" type="tns:ToDoWebService">
 		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
 			style="document" />
-		<operation name="sayHello">
+		<operation name="listTasks">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="addTasks">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="removeTasks">
 			<soap:operation soapAction="" />
 			<input>
 				<soap:body use="literal" />
@@ -41,9 +83,9 @@
 			</output>
 		</operation>
 	</binding>
-	<service name="HelloWebServiceService">
-		<port name="HelloWebServicePort" binding="tns:HelloWebServicePortBinding">
-			<soap:address location="http://localhost:8080/helloWorld" />
+	<service name="ToDoWebServiceService">
+		<port name="ToDoWebServicePort" binding="tns:ToDoWebServicePortBinding">
+			<soap:address location="http://localhost:8080/todoServer" />
 		</port>
 	</service>
 </definitions>
