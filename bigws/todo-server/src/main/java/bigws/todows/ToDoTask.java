@@ -1,4 +1,4 @@
-package bigws.todows.elements;
+package bigws.todows;
 
 public class ToDoTask {
 	

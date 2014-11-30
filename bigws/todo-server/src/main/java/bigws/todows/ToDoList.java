@@ -1,4 +1,4 @@
-package bigws.todows.elements;
+package bigws.todows;
 
 import java.util.ArrayList;
 

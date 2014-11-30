@@ -1,4 +1,4 @@
-package bigws.todows.connections;
+package bigws.todows;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,9 +8,6 @@ import java.io.IOException;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-
-import bigws.todows.elements.ToDoList;
-import bigws.todows.elements.ToDoTask;
 
 import com.google.gson.Gson;
 

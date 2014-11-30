@@ -6,10 +6,9 @@
 	</head>
 	<body>
 		<%	String action = (String)request.getAttribute("action");
-		
 		String message = "";
 		ToDoWebServiceService todowss = new ToDoWebServiceService();
-		ToDoWebService todows = todowss.getToDoWSPort();
+		ToDoWebService todows = todowss.getToDoWebServicePort();
 		
 		switch(action){
 		case "addTask":
@@ -21,12 +20,12 @@
 			(String)request.getAttribute("date"), (String)request.getAttribute("description"));
 			break;
 		case "removeTask":
-			message = ws.removeTask(Integer.parseInt((String)request.getAttribute("title")));
+			message = todows.removeTask((String)request.getAttribute("title"));
 			break;
-		case "list":
-			ToDoList list= ws.listToDo();
+		case "listTasks":
+			String list= todows.listTasks();
 			%>
-			<%=getList(list)%>
+			<%=list.toString()%>
 			<%
 			break;
 		default:

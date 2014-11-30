@@ -29,6 +29,6 @@ dependencies {
 task server(type: JavaExec) {
     group 			= 'ToDo Service'
     description 	= 'Start a SOAP endpoint'
-    main 			= 'bigws.todows.connections.Server'
+    main 			= 'bigws.todows.Server'
 	classpath 		= sourceSets.main.runtimeClasspath
 }
