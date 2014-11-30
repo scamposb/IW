@@ -1,8 +1,7 @@
 <html>
 	<head>
-		<title>Action Done</title>
+		<title>Here are your results</title>
 		<%@ page import="bigws.todows.*" %>
-		<%@ page import="java.util.List" %>
 	</head>
 	<body>
 		<%	String action = (String)request.getAttribute("action");
@@ -11,7 +10,7 @@
 		ToDoWebService todows = todowss.getToDoWebServicePort();
 		
 		switch(action){
-		case "addTask":
+		case "/addTask":
 			int priotask = 0;
 			try{ 
 				priotask = Integer.parseInt((String)request.getAttribute("priotask")); 
@@ -19,13 +18,14 @@
 			message = todows.addTask((String)request.getAttribute("task"), priotask,
 			(String)request.getAttribute("date"), (String)request.getAttribute("description"));
 			break;
-		case "removeTask":
+		case "/removeTask":
 			message = todows.removeTask((String)request.getAttribute("title"));
 			break;
-		case "listTasks":
+		case "/listTasks":
 			String list= todows.listTasks();
+			if(list==null || list.toString().equals("")) list="No hay elementos para listar";
 			%>
-			<%=list.toString()%>
+			<h1>Listado</h1><br><%=list.toString()%>
 			<%
 			break;
 		default:
@@ -33,5 +33,6 @@
 		}		
 		%>
 		<h2><%=message %></h2>
+		<p><form method="link" action="./index.html"> <input type="submit" value="Volver al inicio"> </form></p>
 	</body>
 </html>

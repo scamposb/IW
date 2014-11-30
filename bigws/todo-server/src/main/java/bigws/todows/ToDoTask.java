@@ -45,7 +45,12 @@ public class ToDoTask {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "ToDoTask [title=" + title + ", priority=" + priority
+				+ ", date=" + date + ", description=" + description + "]";
+	}
+
 	
 }

@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 @WebService
 public class ToDoWebService {
 
-	public final static String DEFAULT_FILE_NAME = "todo_list.json";
+	public final static String DEFAULT_FILE_NAME = "task_book.json";
 
 	@WebMethod()
 	public String addTask(
@@ -50,7 +50,7 @@ public class ToDoWebService {
 	@WebMethod()
 	public String removeTask(@WebParam (name="title") String title) {
 		String filename = DEFAULT_FILE_NAME;
-		String result = "";
+		String result = "Result: ";
 		ToDoList list = new ToDoList();
 		Gson gson = new Gson();
 
@@ -61,7 +61,10 @@ public class ToDoWebService {
 					+ ": File not found. Creating a new file.");
 		}
 		ToDoTask task = list.getTaskByName(title);
-		if (list.removeTask(task)) {
+		System.out.println("---->EL SERVER COGE LA TAREA ASI: "+task.toString());
+		boolean success = list.removeTask(task);
+		System.out.println("RESULTADO BORRAR "+success);
+		if (success) {
 			/* Remove task to the list */
 			result = "Task removed from the list";
 		} else {

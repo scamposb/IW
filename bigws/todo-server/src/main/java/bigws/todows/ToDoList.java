@@ -1,20 +1,20 @@
 package bigws.todows;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ToDoList {
 
-	private ArrayList<ToDoTask> todoList;
+private LinkedList<ToDoTask> todoList;
 	
 	public ToDoList(){
-		todoList = new ArrayList<ToDoTask>();
+		todoList = new LinkedList<ToDoTask>();
 	}
 	
-	public ArrayList<ToDoTask> getToDoList(){
+	public LinkedList<ToDoTask> getToDoList(){
 		return this.todoList;
 	}
 	
-	public void setToDoList(ArrayList<ToDoTask> nTodo){
+	public void setToDoList(LinkedList<ToDoTask> nTodo){
 		this.todoList = nTodo;
 	}
 	
@@ -23,6 +23,7 @@ public class ToDoList {
 	}
 	
 	public boolean removeTask(ToDoTask task){
+		System.out.println("---->LISTAMOS EL LIBRO "+this.todoList.toString());
 		return this.todoList.remove(task);
 	}
 	
@@ -34,7 +35,9 @@ public class ToDoList {
 		}
 		return null;
 	}
-
+	public LinkedList<ToDoTask> getList(){
+		return this.todoList;
+	}
 	@Override
 	public String toString() {
 		String result = "";

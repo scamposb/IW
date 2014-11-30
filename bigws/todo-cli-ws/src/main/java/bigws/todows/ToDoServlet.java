@@ -17,21 +17,20 @@ public class ToDoServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	throws ServletException, IOException {
-		System.err.println("---->LLEGAS A ENTRAR AQUI, PEDAZO DE MIERDA???");
 		String option = req.getServletPath();
 		RequestDispatcher rd = req.getRequestDispatcher("results.jsp");
 		
 		switch(option){
-		case "listTasks":
-			System.out.println("---->LE ESTOY MANDANDO LA ACCION");
-			req.setAttribute("action", "listTasks");
+		case "/listTasks":
+			req.setAttribute("action", option);
 			break;
-		case "removeTask":
-			req.setAttribute("action", "removeTask");
+		case "/removeTask":
+			System.out.println("---->LE ESTOY MANDANDO LA BORRAR");
+			req.setAttribute("action", option);
 			req.setAttribute("title", req.getParameter("nameT"));
 			break;
 		default:
-			System.out.println("---->LE ESTOY MANDANDO LA ACCION EN DEFAULT");
+			System.out.println("---->ENTRA EN DEFAULT "+option);
 			req.setAttribute("action", "nothing");
 			break;
 		}
@@ -43,20 +42,21 @@ public class ToDoServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws ServletException, IOException {
 		String option = req.getServletPath();
+		RequestDispatcher rd = req.getRequestDispatcher("results.jsp");
 		
 		switch(option){
-		case "addTask":
-			System.out.println(req.getParameter("task")+" "+ req.getParameter("priotask")+" "+req.getParameter("date")+" "+req.getParameter("description"));
-			RequestDispatcher rd = req.getRequestDispatcher("results.jsp");
+		case "/addTask":
+			req.setAttribute("action", option);
 			req.setAttribute("task", req.getParameter("task"));
 			req.setAttribute("priotask", req.getParameter("priotask"));
 			req.setAttribute("date", req.getParameter("date"));
 			req.setAttribute("description", req.getParameter("description"));
-			rd.forward(req, resp);
 			break;
 		default:
+			req.setAttribute("action", "nothing");
 			break;
 		}
+		rd.forward(req, resp);
 	}
 	
 }
