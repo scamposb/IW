@@ -26,5 +26,9 @@ dependencies {
 	compile 'com.google.code.gson:gson:2.3'
 }
 
-jettyEclipse.httpPort=8081
-jettyEclipse.stopPort=8091
+task server(type: JavaExec) {
+    group 			= 'ToDo Service'
+    description 	= 'Start a SOAP endpoint'
+    main 			= 'bigws.todows.connections.Server'
+	classpath 		= sourceSets.main.runtimeClasspath
+}
