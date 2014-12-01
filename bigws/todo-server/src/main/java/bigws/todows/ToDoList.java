@@ -1,20 +1,20 @@
 package bigws.todows;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class ToDoList {
 
-private LinkedList<ToDoTask> todoList;
+private ArrayList<ToDoTask> todoList;
 	
 	public ToDoList(){
-		todoList = new LinkedList<ToDoTask>();
+		todoList = new ArrayList<ToDoTask>();
 	}
 	
-	public LinkedList<ToDoTask> getToDoList(){
+	public ArrayList<ToDoTask> getToDoList(){
 		return this.todoList;
 	}
 	
-	public void setToDoList(LinkedList<ToDoTask> nTodo){
+	public void setToDoList(ArrayList<ToDoTask> nTodo){
 		this.todoList = nTodo;
 	}
 	
@@ -23,8 +23,27 @@ private LinkedList<ToDoTask> todoList;
 	}
 	
 	public boolean removeTask(ToDoTask task){
-		System.out.println("---->LISTAMOS EL LIBRO "+this.todoList.toString());
-		return this.todoList.remove(task);
+		boolean found = false;
+		String id = task.getTitle();
+		ToDoTask arrayTask;
+		for(int i=0;i<this.todoList.size();i++){
+			arrayTask = this.todoList.get(i);
+			if(arrayTask.getTitle().equals(id)){
+				System.out.println("----->HA ENCONTRADO LA TAREA "+arrayTask);
+				found = true;
+				this.todoList.remove(i);
+				break;
+			}
+		}
+		return found;
+		
+		
+		
+//		System.out.println("---->LISTAMOS EL LIBRO "+this.todoList.toString());
+//		int index = this.todoList.indexOf(task);
+//		System.out.println("----->ESTA EN EL INDEX "+index);
+//		this.todoList.removeElement(task);
+//		return true;
 	}
 	
 	public ToDoTask getTaskByName(String name){
@@ -35,7 +54,7 @@ private LinkedList<ToDoTask> todoList;
 		}
 		return null;
 	}
-	public LinkedList<ToDoTask> getList(){
+	public ArrayList<ToDoTask> getList(){
 		return this.todoList;
 	}
 	@Override
