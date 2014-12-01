@@ -26,13 +26,14 @@
 		
 			String mostrarAdd = (String)request.getParameter("mostrarAdd");
 			if(mostrarAdd == null) mostrarAdd = "false";
+			String mostrarRem = (String)request.getParameter("mostrarRem");
+			if(mostrarRem == null) mostrarRem = "false";
 		%>
 	</head>
 	<body>
 		<h1>Welcome to ToDo powered by SOAP!</h1><br>
 		<h3>What do you want to do?</h3>
-		<ul>
-			<li><a href=./index.jsp?mostrarAdd="true">Add Task</a></li>
+			<a href=./index.jsp?mostrarAdd=true><input type="button" value="Add Task"/></a>
 			<%
 				if(mostrarAdd.equals("true")){
 				%>
@@ -45,27 +46,21 @@
 				<input type="reset" value="Reset"/></p>
 				</form>
 				
-				
-				
-				<%
-				
-				}
-				
-			%>
-			<li>
+				<%}%>
 				<form method="get" action="listTasks">
-					List Tasks <input type="submit" value="Submit"/>
+					<input type="submit" value="List Tasks"/>
 				</form>
-			</li>
-			<p>
+				
+				<a href=./index.jsp?mostrarRem=true><input type="button" value="Remove Task"/></a>
+				<%
+				if(mostrarRem.equals("true")){
+				%>
 				<form method="get" action="removeTask">
-					<li>Remove task<br>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					Insert task name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" name="nameT"/> 
-					<input type="submit" value="Submit"/></li>				
+					<input type="submit" value="Submit"/>				
 				</form>
-			</p>
-		</ul>
+				<%}%>
 	</body>
 </html>

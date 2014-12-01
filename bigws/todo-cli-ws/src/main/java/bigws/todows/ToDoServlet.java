@@ -25,12 +25,10 @@ public class ToDoServlet extends HttpServlet{
 			req.setAttribute("action", option);
 			break;
 		case "/removeTask":
-			System.out.println("---->LE ESTOY MANDANDO LA BORRAR");
 			req.setAttribute("action", option);
 			req.setAttribute("title", req.getParameter("nameT"));
 			break;
 		default:
-			System.out.println("---->ENTRA EN DEFAULT "+option);
 			req.setAttribute("action", "nothing");
 			break;
 		}

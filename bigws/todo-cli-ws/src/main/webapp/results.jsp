@@ -33,6 +33,6 @@
 		}		
 		%>
 		<h2><%=message %></h2>
-		<p><form method="link" action="./index.html"> <input type="submit" value="Volver al inicio"> </form></p>
+		<p><form method="link" action="./index.jsp"> <input type="submit" value="Volver al inicio"> </form></p>
 	</body>
 </html>

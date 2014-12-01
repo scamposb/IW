@@ -61,9 +61,7 @@ public class ToDoWebService {
 					+ ": File not found. Creating a new file.");
 		}
 		ToDoTask task = list.getTaskByName(title);
-		System.out.println("---->EL SERVER COGE LA TAREA ASI: "+task.toString());
 		boolean success = list.removeTask(task);
-		System.out.println("RESULTADO BORRAR "+success);
 		if (success) {
 			/* Remove task to the list */
 			result = "Task removed from the list";
