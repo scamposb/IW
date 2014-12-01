@@ -29,7 +29,6 @@ private ArrayList<ToDoTask> todoList;
 		for(int i=0;i<this.todoList.size();i++){
 			arrayTask = this.todoList.get(i);
 			if(arrayTask.getTitle().equals(id)){
-				System.out.println("----->HA ENCONTRADO LA TAREA "+arrayTask);
 				found = true;
 				this.todoList.remove(i);
 				break;
