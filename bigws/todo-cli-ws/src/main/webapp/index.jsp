@@ -49,8 +49,7 @@
 				<%}%>
 				<form method="get" action="listTasks">
 					<input type="submit" value="List Tasks"/>
-				</form>
-				
+				</form>				
 				<a href=./index.jsp?mostrarRem=true><input type="button" value="Remove Task"/></a>
 				<%
 				if(mostrarRem.equals("true")){

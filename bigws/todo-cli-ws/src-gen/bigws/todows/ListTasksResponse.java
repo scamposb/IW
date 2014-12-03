@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="return" type="{http://todows.bigws/}toDoList" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,18 +32,18 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ListTasksResponse {
 
-    @XmlElement(name = "return", required = true)
-    protected String _return;
+    @XmlElement(name = "return")
+    protected ToDoList _return;
 
     /**
      * Obtiene el valor de la propiedad return.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ToDoList }
      *     
      */
-    public String getReturn() {
+    public ToDoList getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class ListTasksResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ToDoList }
      *     
      */
-    public void setReturn(String value) {
+    public void setReturn(ToDoList value) {
         this._return = value;
     }
 

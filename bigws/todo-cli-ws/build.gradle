@@ -32,7 +32,7 @@ dependencies {
 wsdl {
 	wsdlFolder = "src/main/wsdl"
 	wsimport {
-		sourceDestinationDirectory = "src-gen/main/java"
+		sourceDestinationDirectory = "src-gen/"
 		wsdlLocation = "http://localhost:8081/todoServer?wsdl"
 	}
 }

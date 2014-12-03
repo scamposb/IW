@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="priority" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="priority" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class AddTask {
 
     protected String title;
-    protected Integer priority;
+    protected int priority;
     protected String date;
     protected String description;
 
@@ -69,24 +69,16 @@ public class AddTask {
     /**
      * Obtiene el valor de la propiedad priority.
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
-    public Integer getPriority() {
+    public int getPriority() {
         return priority;
     }
 
     /**
      * Define el valor de la propiedad priority.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
      */
-    public void setPriority(Integer value) {
+    public void setPriority(int value) {
         this.priority = value;
     }
 

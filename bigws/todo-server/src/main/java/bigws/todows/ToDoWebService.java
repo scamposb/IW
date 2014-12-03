@@ -17,11 +17,10 @@ public class ToDoWebService {
 	public final static String DEFAULT_FILE_NAME = "task_book.json";
 
 	@WebMethod()
-	public String addTask(
+	public boolean addTask(
 			@WebParam (name="title")String title,@WebParam (name="priority") int priority,@WebParam (name="date") String date,
 			@WebParam (name="description")String description) {
 		String filename = DEFAULT_FILE_NAME;
-		String result = "";
 		ToDoList list = new ToDoList();
 		Gson gson = new Gson();
 
@@ -40,17 +39,15 @@ public class ToDoWebService {
 			output = new FileWriter(filename);
 			output.write(gson.toJson(list));
 			output.close();
-			result = "Task added";
+			return true;
 		} catch (IOException e) {
-			result = e.getMessage();
+			return false;
 		}
-		return result;
 	}
 
 	@WebMethod()
-	public String removeTask(@WebParam (name="title") String title) {
+	public boolean removeTask(@WebParam (name="title") String title) {
 		String filename = DEFAULT_FILE_NAME;
-		String result = "Result: ";
 		ToDoList list = new ToDoList();
 		Gson gson = new Gson();
 
@@ -62,12 +59,6 @@ public class ToDoWebService {
 		}
 		ToDoTask task = list.getTaskByName(title);
 		boolean success = list.removeTask(task);
-		if (success) {
-			/* Remove task to the list */
-			result = "Task removed from the list";
-		} else {
-			result = "The task doesn´t exist";
-		}
 
 		FileWriter output;
 		try {
@@ -75,15 +66,15 @@ public class ToDoWebService {
 			output.write(gson.toJson(list));
 			output.close();
 		} catch (IOException e) {
-			result += e.getMessage();
+			success = false;
 		}
 
-		return result;
+		return success;
 
 	}
 
 	@WebMethod()
-	public String listTasks() {
+	public ToDoList listTasks() {
 		String filename = DEFAULT_FILE_NAME;
 		ToDoList list = new ToDoList();
 		Gson gson = new Gson();
@@ -93,7 +84,7 @@ public class ToDoWebService {
 			System.out.println(filename
 					+ ": File not found. Creating a new file.");
 		}
-		return list.toString();
+		return list;
 	}
 
 }

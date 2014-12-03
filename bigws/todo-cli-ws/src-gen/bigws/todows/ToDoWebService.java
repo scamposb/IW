@@ -25,14 +25,28 @@ public interface ToDoWebService {
 
     /**
      * 
+     * @param title
      * @return
-     *     returns java.lang.String
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "removeTask", targetNamespace = "http://todows.bigws/", className = "bigws.todows.RemoveTask")
+    @ResponseWrapper(localName = "removeTaskResponse", targetNamespace = "http://todows.bigws/", className = "bigws.todows.RemoveTaskResponse")
+    public boolean removeTask(
+        @WebParam(name = "title", targetNamespace = "")
+        String title);
+
+    /**
+     * 
+     * @return
+     *     returns bigws.todows.ToDoList
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "listTasks", targetNamespace = "http://todows.bigws/", className = "bigws.todows.ListTasks")
     @ResponseWrapper(localName = "listTasksResponse", targetNamespace = "http://todows.bigws/", className = "bigws.todows.ListTasksResponse")
-    public String listTasks();
+    public ToDoList listTasks();
 
     /**
      * 
@@ -41,34 +55,20 @@ public interface ToDoWebService {
      * @param priority
      * @param date
      * @return
-     *     returns java.lang.String
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "addTask", targetNamespace = "http://todows.bigws/", className = "bigws.todows.AddTask")
     @ResponseWrapper(localName = "addTaskResponse", targetNamespace = "http://todows.bigws/", className = "bigws.todows.AddTaskResponse")
-    public String addTask(
+    public boolean addTask(
         @WebParam(name = "title", targetNamespace = "")
         String title,
         @WebParam(name = "priority", targetNamespace = "")
-        Integer priority,
+        int priority,
         @WebParam(name = "date", targetNamespace = "")
         String date,
         @WebParam(name = "description", targetNamespace = "")
         String description);
-
-    /**
-     * 
-     * @param title
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "removeTask", targetNamespace = "http://todows.bigws/", className = "bigws.todows.RemoveTask")
-    @ResponseWrapper(localName = "removeTaskResponse", targetNamespace = "http://todows.bigws/", className = "bigws.todows.RemoveTaskResponse")
-    public String removeTask(
-        @WebParam(name = "title", targetNamespace = "")
-        String title);
 
 }

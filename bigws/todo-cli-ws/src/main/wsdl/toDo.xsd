@@ -4,41 +4,67 @@
 	version="1.0" targetNamespace="http://todows.bigws/">
 
 	<xs:element name="addTask" type="tns:addTask" />
+
 	<xs:element name="addTaskResponse" type="tns:addTaskResponse" />
+
 	<xs:element name="listTasks" type="tns:listTasks" />
+
 	<xs:element name="listTasksResponse" type="tns:listTasksResponse" />
+
 	<xs:element name="removeTask" type="tns:removeTask" />
+
 	<xs:element name="removeTaskResponse" type="tns:removeTaskResponse" />
 
-	<xs:complexType name="addTask">
-		<xs:sequence>
-			<xs:element name="title" type="xs:string" minOccurs="0" />
-			<xs:element name="priority" type="xs:int" minOccurs="0" />
-			<xs:element name="date" type="xs:string" minOccurs="0" />
-			<xs:element name="description" type="xs:string" minOccurs="0" />
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="addTaskResponse">
-		<xs:sequence>
-			<xs:element name="return" type="xs:string" />
-		</xs:sequence>
-	</xs:complexType>
 	<xs:complexType name="removeTask">
 		<xs:sequence>
 			<xs:element name="title" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
+
 	<xs:complexType name="removeTaskResponse">
 		<xs:sequence>
-			<xs:element name="return" type="xs:string" />
+			<xs:element name="return" type="xs:boolean" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="listTasks">
-		<xs:sequence/>
+
+	<xs:complexType name="addTask">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" minOccurs="0" />
+			<xs:element name="priority" type="xs:int" />
+			<xs:element name="date" type="xs:string" minOccurs="0" />
+			<xs:element name="description" type="xs:string" minOccurs="0" />
+		</xs:sequence>
 	</xs:complexType>
+
+	<xs:complexType name="addTaskResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="listTasks">
+		<xs:sequence />
+	</xs:complexType>
+
 	<xs:complexType name="listTasksResponse">
 		<xs:sequence>
-			<xs:element name="return" type="xs:string" />
+			<xs:element name="return" type="tns:toDoList" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="toDoList">
+		<xs:sequence>
+			<xs:element name="toDoList" type="tns:toDoTask" nillable="true"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="toDoTask">
+		<xs:sequence>
+			<xs:element name="date" type="xs:string" minOccurs="0" />
+			<xs:element name="description" type="xs:string" minOccurs="0" />
+			<xs:element name="priority" type="xs:int" />
+			<xs:element name="title" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

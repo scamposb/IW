@@ -35,14 +35,6 @@ private ArrayList<ToDoTask> todoList;
 			}
 		}
 		return found;
-		
-		
-		
-//		System.out.println("---->LISTAMOS EL LIBRO "+this.todoList.toString());
-//		int index = this.todoList.indexOf(task);
-//		System.out.println("----->ESTA EN EL INDEX "+index);
-//		this.todoList.removeElement(task);
-//		return true;
 	}
 	
 	public ToDoTask getTaskByName(String name){
@@ -56,8 +48,8 @@ private ArrayList<ToDoTask> todoList;
 	public ArrayList<ToDoTask> getList(){
 		return this.todoList;
 	}
-	@Override
-	public String toString() {
+	
+	public String showList() {
 		String result = "";
 		for(ToDoTask t : todoList){
 			result += "Title: "+t.getTitle() +"\n"
