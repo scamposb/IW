@@ -1,19 +1,26 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+buildscript {
+	repositories {
+		jcenter()
+		mavenCentral()
+	}
+	
+	dependencies {
+		classpath (group: 'com.sahlbach.gradle', name: 'gradle-jetty-eclipse-plugin', version: '1.9.+')
+	}
+}
 
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jettyEclipse'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
 
 repositories {
-   mavenCentral()                                               
+	mavenCentral()
 }
 
 dependencies {
-   compile 'org.glassfish.jersey.core:jersey-client:2.3.1'
-}
-
-
-task client(type: JavaExec) {
-    group 			= 'Hello World Client'
-    description 	= 'Consume a REST endpoint'
-    main 			= 'rest.hellows.Client'
-	classpath 		= sourceSets.main.runtimeClasspath
+	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+	compile 'org.glassfish.jersey.core:jersey-client:2.13'
+	compile 'org.glassfish.jersey.media:jersey-media-moxy:2.13'
 }
