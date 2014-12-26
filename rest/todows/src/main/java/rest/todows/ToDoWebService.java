@@ -31,23 +31,25 @@ public class ToDoWebService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public ToDoList getToDoList() {
-		return todoList;
+	public Response getToDoList() {
+		return Response.ok(todoList, MediaType.APPLICATION_JSON).build();
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addTask(@Context UriInfo info, ToDoTask task) {
+		todoList.addTask(task);
+		task.setId(todoList.nextId());
 		task.setHref(info.getAbsolutePathBuilder().path("ToDo/{id}").build(task.getId()));
 		todoList.addTask(task);
 		return Response.created(task.getHref()).entity(task).build();
 	}
 
 	@PUT
-	@Path("/ToDo/{title}")
+	@Path("/ToDo/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateToDo(@Context UriInfo info,
-			@PathParam("title") String title, ToDoTask task) {
+			@PathParam("id") int id, ToDoTask task) {
 		for (int i = 0; i < todoList.getList().size(); i++) {
 			if (todoList.getList().get(i).getTitle().equals(title)) {
 				task.setHref(info.getAbsolutePath());
@@ -60,10 +62,10 @@ public class ToDoWebService {
 	}
 
 	@DELETE
-	@Path("/ToDo/{title}")
+	@Path("/ToDo/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response removeTask(@Context UriInfo info,
-			@PathParam("title") String title) {
+			@PathParam("id") int id) {
 		boolean result = false;
 		result = todoList.removeTask(todoList.getTaskByName(title));
 		if(result) return Response.noContent().build();

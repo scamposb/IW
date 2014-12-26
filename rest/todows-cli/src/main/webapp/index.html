@@ -1,0 +1,44 @@
+<%@ page import="java.util.Map" %>
+<html>
+	<head>
+		<title>ToDo REST</title>
+		<script src="task.js"></script>
+		
+	</head>
+	<body>
+		<input type="button" value="Add Task" id="add"/>
+		<input type="button" value="Remove Task" id="remove"/>
+		<input type="button" value="List Task" id="list"/>
+		<input type="button" value="Update Task" id="update"/>
+		<div>
+			<form method="post" action="addTask">
+				<p>Name:<input type="text" name="title" id="title"/></p>
+				<p>Task's priority:<input type="text" name="priority" id="priority"/></p>
+				<p>Has the task a finish date? (leave blank if it isnt) :<input type="text" name="date" id="date"/></p>
+				<p>Insert a little description of the task:<input type="textarea" name="description" id="description"/></p>
+				<p align="center"><input type="button" value="Submit" id="subadd"/>
+				<input type="reset" value="Reset"/></p>
+			</form>
+		</div>
+		<div>
+			Fill the data that you want to change:
+			<form method="put" action="updateTask">
+				<p>Id:<input type="text" name="idU" id="idU"/></p>
+				<p>Name:<input type="text" name="titleU" id="titleU"/></p>
+				<p>Task's priority:<input type="text" name="priority" id="priorityU"/></p>
+				<p>Has the task a finish date? (leave blank if it isnt) :<input type="text" name="date" id="dateU"/></p>
+				<p>Insert a little description of the task:<input type="textarea" name="description" id="descriptionU"/></p>
+				<p align="center"><input type="button" value="Submit" id="subaddU"/>
+				<input type="reset" value="Reset"/></p>
+			</form>
+		
+		</div>
+		
+		<div>
+			<ul id=taskList>
+				
+			</ul>
+		
+		</div>
+	</body>
+</html>

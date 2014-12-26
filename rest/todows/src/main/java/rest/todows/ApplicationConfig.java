@@ -19,6 +19,7 @@ public class ApplicationConfig extends ResourceConfig {
      * @param addressBook a provided address book
      */
     public ApplicationConfig(final ToDoList todoList) {
+    	register(CrossDomainFilter.class);
     	register(ToDoWebService.class);
     	register(MOXyJsonProvider.class);
     	register(new AbstractBinder() {

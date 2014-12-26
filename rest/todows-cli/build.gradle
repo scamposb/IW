@@ -1,7 +1,6 @@
 buildscript {
 	repositories {
 		jcenter()
-		mavenCentral()
 	}
 	
 	dependencies {
@@ -14,6 +13,8 @@ apply plugin: 'war'
 apply plugin: 'jettyEclipse'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
+
+jettyEclipse.httpPort = 8282
 
 repositories {
 	mavenCentral()

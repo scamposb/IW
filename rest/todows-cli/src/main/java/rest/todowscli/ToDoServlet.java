@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = { "/addTask","/removeTask","/listTasks"})	
 public class ToDoServlet extends HttpServlet{
+	
+	public ToDoServlet(){
+		super();
+	}
  	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -5,8 +5,10 @@ import java.util.ArrayList;
 public class ToDoList {
 
 private ArrayList<ToDoTask> todoList;
+private int id;
 	
 	public ToDoList(){
+		id = 0;
 		todoList = new ArrayList<ToDoTask>();
 	}
 	
@@ -59,6 +61,11 @@ private ArrayList<ToDoTask> todoList;
 		}
 		if(todoList.size()<0) result="Empty list";
 		return result;
+	}
+
+	public int nextId() {
+		// TODO Auto-generated method stub
+		return id++;
 	}
 	
 	
